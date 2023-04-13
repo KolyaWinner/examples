@@ -44,8 +44,8 @@ cmd:contspawn(playerid)
 			radmir_container_install(i, random(5));
 		}
 	}
-	SCM(playerid, 0xAFAFAFFF, !"Новые контейнеры (Транспортное средство) заспавнены на свободные места");
-	return SendMessageContainer("{DC973A}В порт доставлена новая партия контейнеров.");
+	SCM(playerid, 0xAFAFAFFF, !"РќРѕРІС‹Рµ РєРѕРЅС‚РµР№РЅРµСЂС‹ (РўСЂР°РЅСЃРїРѕСЂС‚РЅРѕРµ СЃСЂРµРґСЃС‚РІРѕ) Р·Р°СЃРїР°РІРЅРµРЅС‹ РЅР° СЃРІРѕР±РѕРґРЅС‹Рµ РјРµСЃС‚Р°");
+	return SendMessageContainer("{DC973A}Р’ РїРѕСЂС‚ РґРѕСЃС‚Р°РІР»РµРЅР° РЅРѕРІР°СЏ РїР°СЂС‚РёСЏ РєРѕРЅС‚РµР№РЅРµСЂРѕРІ.");
 }
 
 stock radmir_container_install(id, from = 0) // 0 dubai 1 - usa 2 - europe 3 - rf
@@ -91,7 +91,7 @@ stock radmir_container_install(id, from = 0) // 0 dubai 1 - usa 2 - europe 3 - r
 	radmir_container[id][cont_timer] = 30;
 	SetFloatPosData(radmir_container[id][cont_position], radmir_cont_vehicle_pos[id][0] - 6.5, radmir_cont_vehicle_pos[id][1], radmir_cont_vehicle_pos[id][2]);
 
-	format( STRING_GLOBAL, 350, "{F1F1F1}Используйте {F1BC2E}L.ALT {F1F1F1}чтобы \nоткрыть торги за контейнер начальная \nстоимость которого составляет: {DC973A}%d руб", radmir_container[id][cont_money]);
+	format( STRING_GLOBAL, 350, "{F1F1F1}Р�СЃРїРѕР»СЊР·СѓР№С‚Рµ {F1BC2E}L.ALT {F1F1F1}С‡С‚РѕР±С‹ \nРѕС‚РєСЂС‹С‚СЊ С‚РѕСЂРіРё Р·Р° РєРѕРЅС‚РµР№РЅРµСЂ РЅР°С‡Р°Р»СЊРЅР°СЏ \nСЃС‚РѕРёРјРѕСЃС‚СЊ РєРѕС‚РѕСЂРѕРіРѕ СЃРѕСЃС‚Р°РІР»СЏРµС‚: {DC973A}%d СЂСѓР±", radmir_container[id][cont_money]);
 	UpdateDynamic3DTextLabelText(radmir_container[id][cont_text][1], 0xDCDBDBFF, STRING_GLOBAL);
 	return radmir_container_update(id);
 }
@@ -116,14 +116,14 @@ stock radmir_container_update(id)
 {
 	switch(radmir_container[id][cont_from])
 	{
-		case 0: STRING_GLOBAL = "{F0DA4D}Объединённые Арабские Эмираты";
-		case 1: STRING_GLOBAL = "{4F7AB0}Соединенные Штаты Америки";
-		case 2: STRING_GLOBAL = "{55A0FA}Европейский Союз";
-		case 3: STRING_GLOBAL = "{FF6347}Российская Федерация";
-		case 4: STRING_GLOBAL = "{D36F11}Китайская Народная Республика";
+		case 0: STRING_GLOBAL = "{F0DA4D}РћР±СЉРµРґРёРЅС‘РЅРЅС‹Рµ РђСЂР°Р±СЃРєРёРµ Р­РјРёСЂР°С‚С‹";
+		case 1: STRING_GLOBAL = "{4F7AB0}РЎРѕРµРґРёРЅРµРЅРЅС‹Рµ РЁС‚Р°С‚С‹ РђРјРµСЂРёРєРё";
+		case 2: STRING_GLOBAL = "{55A0FA}Р•РІСЂРѕРїРµР№СЃРєРёР№ РЎРѕСЋР·";
+		case 3: STRING_GLOBAL = "{FF6347}Р РѕСЃСЃРёР№СЃРєР°СЏ Р¤РµРґРµСЂР°С†РёСЏ";
+		case 4: STRING_GLOBAL = "{D36F11}РљРёС‚Р°Р№СЃРєР°СЏ РќР°СЂРѕРґРЅР°СЏ Р РµСЃРїСѓР±Р»РёРєР°";
 	}
 	
-	format( STRING_GLOBAL, 250, "%s \n{F1F1F1}Вес: {DCBD3A}3500.00 кг (№%d) \n{F1F1F1}Содержимое: {C1D369}Транспорт \n{F1F1F1}Стоимость: {DC973A}%d руб", STRING_GLOBAL, id + 1 , radmir_container[id][cont_money]);
+	format( STRING_GLOBAL, 250, "%s \n{F1F1F1}Р’РµСЃ: {DCBD3A}3500.00 РєРі (в„–%d) \n{F1F1F1}РЎРѕРґРµСЂР¶РёРјРѕРµ: {C1D369}РўСЂР°РЅСЃРїРѕСЂС‚ \n{F1F1F1}РЎС‚РѕРёРјРѕСЃС‚СЊ: {DC973A}%d СЂСѓР±", STRING_GLOBAL, id + 1 , radmir_container[id][cont_money]);
 	return UpdateDynamic3DTextLabelText(radmir_container[id][cont_text][0], 0xDCDBDBFF, STRING_GLOBAL);
 }
 
@@ -134,12 +134,12 @@ stock radmir_container_timer_update()
 		if(radmir_container[id][cont_status]) && radmir_container[id][cont_timer] && !(radmir_container[id][cont_owner_id] == INVALID_PLAYER_ID)
 		{
 			radmir_container[id][cont_timer]--;
-			format( STRING_GLOBAL, 400, "{F1F1F1}Контейнер {F69E00}№%d \n{F1F1F1}До конца торгов осталось {E9C700}%d {F1F1F1}сек \n\n{F1F1F1}Текущая стоимость: {F65D00}%d руб \n{F1F1F1}Предложил: {BEAB4A}%s \n\n{F1F1F1}Используйте {F1BC2E}L.ALT {F1F1F1}чтобы оценить стоимость \nэтого контейнера в свою пользу", id + 1, radmir_container[id][cont_timer], radmir_container[id][cont_money], GetPlayerNameEx(radmir_container[id][cont_owner_id]));
+			format( STRING_GLOBAL, 400, "{F1F1F1}РљРѕРЅС‚РµР№РЅРµСЂ {F69E00}в„–%d \n{F1F1F1}Р”Рѕ РєРѕРЅС†Р° С‚РѕСЂРіРѕРІ РѕСЃС‚Р°Р»РѕСЃСЊ {E9C700}%d {F1F1F1}СЃРµРє \n\n{F1F1F1}РўРµРєСѓС‰Р°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ: {F65D00}%d СЂСѓР± \n{F1F1F1}РџСЂРµРґР»РѕР¶РёР»: {BEAB4A}%s \n\n{F1F1F1}Р�СЃРїРѕР»СЊР·СѓР№С‚Рµ {F1BC2E}L.ALT {F1F1F1}С‡С‚РѕР±С‹ РѕС†РµРЅРёС‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ \nСЌС‚РѕРіРѕ РєРѕРЅС‚РµР№РЅРµСЂР° РІ СЃРІРѕСЋ РїРѕР»СЊР·Сѓ", id + 1, radmir_container[id][cont_timer], radmir_container[id][cont_money], GetPlayerNameEx(radmir_container[id][cont_owner_id]));
 			
 			if(!radmir_container[id][cont_timer])
 			{
 				radmir_container[id][cont_status] = 2;
-				format( STRING_GLOBAL, 400, "{BEAB4A}Контейнер Был продан за {F65D00}%d руб.\n\n{F1F1F1}Вы владелец? Используйте {F1BC2E}L.ALT {F1F1F1}чтобы снять замок", radmir_container[id][cont_money]);
+				format( STRING_GLOBAL, 400, "{BEAB4A}РљРѕРЅС‚РµР№РЅРµСЂ Р‘С‹Р» РїСЂРѕРґР°РЅ Р·Р° {F65D00}%d СЂСѓР±.\n\n{F1F1F1}Р’С‹ РІР»Р°РґРµР»РµС†? Р�СЃРїРѕР»СЊР·СѓР№С‚Рµ {F1BC2E}L.ALT {F1F1F1}С‡С‚РѕР±С‹ СЃРЅСЏС‚СЊ Р·Р°РјРѕРє", radmir_container[id][cont_money]);
 				UpdateDynamic3DTextLabelText(radmir_container[id][cont_text][0], 0xDCDBDBFF, !"");
 			}
 			UpdateDynamic3DTextLabelText(radmir_container[id][cont_text][1], 0xDCDBDBFF, STRING_GLOBAL);
@@ -185,7 +185,7 @@ stock radmir_container_car_spawn(id)
 
 	radmir_container[id][cont_car] = CreateVehicle(model, radmir_cont_vehicle_pos[id][0], radmir_cont_vehicle_pos[id][1], radmir_cont_vehicle_pos[id][2], 90.0, random(255), random(255), -1, 0, VEHICLE_ACTION_TYPE_ADMIN_CAR, 0);
 	DestroyDynamic3DTextLabel(radmir_container[id][cont_text][1]);
-	radmir_container[id][cont_text][1] = CreateDynamic3DTextLabel("{99CC00}Транспортное средство\n{F1F1F1}Используйте {F1BC2E}L.ALT {F1F1F1}чтобы \nпринять решение по этому транспорту", 0xDCDBDBFF, radmir_cont_vehicle_pos[id][0], radmir_cont_vehicle_pos[id][1], radmir_cont_vehicle_pos[id][2] + 1.0, 20.0);
+	radmir_container[id][cont_text][1] = CreateDynamic3DTextLabel("{99CC00}РўСЂР°РЅСЃРїРѕСЂС‚РЅРѕРµ СЃСЂРµРґСЃС‚РІРѕ\n{F1F1F1}Р�СЃРїРѕР»СЊР·СѓР№С‚Рµ {F1BC2E}L.ALT {F1F1F1}С‡С‚РѕР±С‹ \nРїСЂРёРЅСЏС‚СЊ СЂРµС€РµРЅРёРµ РїРѕ СЌС‚РѕРјСѓ С‚СЂР°РЅСЃРїРѕСЂС‚Сѓ", 0xDCDBDBFF, radmir_cont_vehicle_pos[id][0], radmir_cont_vehicle_pos[id][1], radmir_cont_vehicle_pos[id][2] + 1.0, 20.0);
 	SetFloatPosData(radmir_container[id][cont_position], radmir_cont_vehicle_pos[id][0] - 2.5, radmir_cont_vehicle_pos[id][1], radmir_cont_vehicle_pos[id][2]);
 }
 
@@ -291,8 +291,6 @@ stock radmir_container_player_delete(playerid)
 	for(new id; id < MAX_RADMIR_CONTAINERS; id++)
 	{
 		if(radmir_container[id][cont_owner_id] == playerid && radmir_container[id][cont_status])
-        {
 			radmir_container_delete(id);
-        }
 	}
 }
