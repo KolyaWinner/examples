@@ -291,8 +291,8 @@ stock radmir_container_player_delete(playerid)
 	for(new id; id < MAX_RADMIR_CONTAINERS; id++)
 	{
 		if(radmir_container[id][cont_owner_id] == playerid && radmir_container[id][cont_status])
-    {
-        radmir_container_delete(id);
-    }
+        {
+			radmir_container_delete(id);
+        }
 	}
 }
